@@ -1,0 +1,42 @@
+Em xin gửi báo cáo hoàn chỉnh về các nhiệm vụ đã được giao. 
+Dưới đây là mô tả chi tiết về mỗi nhiệm vụ và tiến độ hoàn thành:
+1.1 Yêu cầu oop
+- Xây dựng chương trình Java áp dụng đầy đủ 4 tính chất của OOP:
+  Em đã xây dựng một chương trình Java mô phỏng các hình học (hình tròn và hình chữ nhật) để minh họa 4 tính chất của OOP.
+    + Tính đóng gói: Sử dụng các access modifiers để giới hạn quyền truy cập vào các thành viên của lớp và đảm bảo tính riêng tư của chúng.
+    + Tính kế thừa: Tạo các lớp con (Circle và Rectangle) kế thừa từ lớp cha (Shape) và sử dụng từ khóa "extends".
+    + Tính đa hình: Ghi đè phương thức getArea() trong các lớp con để cung cấp hành vi riêng biệt cho mỗi loại hình.
+    + Tính trừu tượng: Khai báo lớp Shape là một lớp trừu tượng và để các lớp con triển khai phương thức getArea() theo cách riêng của chúng.
+-  Hiểu các khái niệm interface,static,....
+    + Interface: Một interface trong Java là một bộ các phương thức trừu tượng mà các lớp khác có thể triển khai.
+    Nó định nghĩa các hành vi chung và quy tắc mà các lớp triển khai phải tuân thủ. 
+    Interface được khai báo bằng từ khóa interface và các phương thức trong interface mặc định là trừu tượng và public.
+    + Static: Từ khóa static trong Java được sử dụng để khai báo một thành viên của lớp (phương thức hoặc biến) là tĩnh. 
+    Các thành viên tĩnh thuộc về lớp chứ không thuộc về các đối tượng cụ thể của lớp và có thể được truy cập thông qua tên lớp mà không cần tạo đối tượng.
+1.2 Yêu cầu đọc ghi file
+- Viết trương trình java đọc ghi file theo 2 dạng binary và text
+  + Ghi file dưới dạng binary:
+    Phương thức writeBinaryFile nhận đường dẫn file và ghi dữ liệu binary vào file. 
+    Một mảng byte data được khai báo và ghi vào file sử dụng FileOutputStream.
+    File binary được ghi với đường dẫn filePath1.
+  + Đọc file dưới dạng binary:
+    Phương thức readBinaryFile nhận đường dẫn file và đọc file dưới dạng binary. 
+    Dữ liệu được đọc byte-by-byte từ file sử dụng FileInputStream, và mỗi byte được in ra dưới dạng hex value sử dụng Integer.toHexString().
+    File binary được đọc với đường dẫn filePath1.
+  + Ghi file dưới dạng text:
+    Phương thức writeTextFile nhận đường dẫn file và ghi dữ liệu text vào file. 
+    Một chuỗi text được khai báo và ghi vào file sử dụng BufferedWriter.
+    File text được ghi với đường dẫn filePath.
+  + Đọc file dưới dạng text:
+    Phương thức readTextFile nhận đường dẫn file và đọc file dưới dạng text. 
+    Dữ liệu được đọc từ file dòng cuối cùng sử dụng BufferedReader, và mỗi dòng được in ra bằng cách sử dụng System.out.println().
+    File text được đọc với đường dẫn filePath.
+- Viết trương trình java thao tác với file và thư mục: list các file, đọc nội dung file
+  + Liệt kê các file trong thư mục:
+    Phương thức listFilesInDirectory nhận đường dẫn thư mục và liệt kê các file trong thư mục đó. 
+    Một đối tượng File được tạo từ đường dẫn thư mục, và sau đó sử dụng phương thức listFiles() để lấy danh sách các file trong thư mục.
+    Các file được in ra bằng cách sử dụng file.getName() để lấy tên file.
+  + Đọc nội dung của file:
+    Phương thức readFileContent nhận đường dẫn file và đọc nội dung của file. 
+    Một đối tượng Path được tạo từ đường dẫn file sử dụng Paths.get(), sau đó sử dụng Files.readString() để đọc nội dung của file.
+    Nội dung của file được in ra sử dụng System.out.println().
