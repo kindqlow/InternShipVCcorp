@@ -61,11 +61,11 @@ class Rectangle extends Shape {
 
 public class Main {
     public static void main(String[] args) {
-        Circle circle = new Circle("Red", 5.0);
+        Shape circle = new Circle("Red", 5.0);
         System.out.println("Circle color: " + circle.getColor());
         System.out.println("Circle area: " + circle.getArea());
 
-        Rectangle rectangle = new Rectangle("Blue", 4.0, 6.0);
+        Shape rectangle = new Rectangle("Blue", 4.0, 6.0);
         System.out.println("Rectangle color: " + rectangle.getColor());
         System.out.println("Rectangle area: " + rectangle.getArea());
     }
