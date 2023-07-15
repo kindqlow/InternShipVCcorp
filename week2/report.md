@@ -51,6 +51,21 @@ TS: The collection is thread-safe (cấu trúc dữ liệu hoặc lớp có th�
 |    HashSet   |    No     |     No     |     No     |     No     |
 |   ArrayList  |    Yes    |     Yes    |     No     |     No     | 
 
+### So sánh đặc điểm của các cấu trúc dữ liệu này:
+•	HashMap và HashSet đều dựa trên bảng băm (hash table) để lưu trữ dữ liệu và tìm kiếm nhanh.
+
+•	HashMap lưu trữ các cặp khóa-giá trị, trong khi HashSet chỉ lưu trữ các phần tử đơn lẻ.
+
+•	HashSet không cho phép các phần tử trùng lặp, trong khi HashMap cho phép các khóa trùng lặp, nhưng các khóa phải là duy nhất.
+
+•	ArrayList là một mảng có thể thay đổi kích thước, cho phép truy cập ngẫu nhiên vào các phần tử dựa trên chỉ số.
+
+•	ArrayList lưu trữ các phần tử theo thứ tự, trong khi HashMap và HashSet không đảm bảo thứ tự lưu trữ.
+
+•	ArrayList có thể chứa các phần tử null, trong khi HashMap và HashSet không cho phép phần tử null làm khóa hoặc giá trị.
+
+•	ArrayList sử dụng chỉ số dựa trên số nguyên để truy cập vào các phần tử, trong khi HashMap và HashSet sử dụng khóa để truy cập và tìm kiếm dữ liệu.
+
 ## Về hashcode, equals
 Khái niệm hashcode và equals liên quan chặt chẽ đến việc xác định tính duy nhất của các phần tử trong một Set, như HashSet.
 
