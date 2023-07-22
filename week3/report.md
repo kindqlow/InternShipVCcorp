@@ -67,6 +67,17 @@ Một số đặc điểm và tính năng quan trọng của ConcurrentHashMap b
 •	Hỗ trợ thao tác không ghi đè (Read-Write): ConcurrentHashMap hỗ trợ các thao tác đọc (get) mà không ghi đè. Nhiều luồng có thể đọc từ bản sao của dữ liệu mà không cần đồng bộ hóa, do đó cải thiện hiệu suất đọc dữ liệu.
 
 •	Phạm vi đồng bộ hóa cở sở: Thay vì đồng bộ hóa toàn bộ dữ liệu như synchronized hoặc Lock, ConcurrentHashMap cho phép đồng bộ hóa chỉ ở cấp độ phân đoạn, giúp tối ưu hiệu suất khi nhiều luồng truy cập vào các khóa khác nhau.
+## 2.6 SafeThread, UnsafeThread,  DaemonThread
+### 2.6.1 SafeThread
+Thread safety là một tính chất của một đoạn mã (hoặc một lớp) đảm bảo rằng nó có thể được sử dụng đồng thời bởi nhiều luồng mà không gây ra lỗi hoặc xung đột dữ liệu. Khi nhiều luồng truy cập và sửa đổi dữ liệu cùng một lúc, có thể xảy ra các tình huống không mong muốn như đọc/ghi dữ liệu không đồng nhất, race condition (đua nhau), deadlock (kẹt luồng), và các vấn đề bảo mật khác.
+
+Em đã triển khai ví dụ trong file ThreadSafetyExample
+### 2.6.2 UnsafeThread
+Ngược lại với SafeThread trong lập trình đa luồng, một tình huống được coi là không an toàn khi một hoặc nhiều luồng cùng truy cập và thay đổi dữ liệu chia sẻ mà không có bất kỳ bảo đảm đồng bộ nào.
+### 2.6.3 Deamon Thread
+Trong Java, một "daemon thread" là một loại luồng (thread) chạy trong nền mà không ngăn chặn quá trình thoát của chương trình. Nó tồn tại để hỗ trợ các luồng chính (main threads) và sẽ dừng khi tất cả các luồng chính dừng.
+
+Em đã thực hiện ví dụ trong file DaemonThreadExample
 # 3 Json
 ## 3.1 Json là gì
 JSON (JavaScript Object Notation) là một định dạng dữ liệu phổ biến được sử dụng để truyền và trao đổi dữ liệu giữa các ứng dụng web và phần mềm. Nó là một dạng dữ liệu dựa trên văn bản, dễ đọc và dễ viết cho con người, và dễ dàng phân tích cú pháp và xử lý bởi các ngôn ngữ lập trình.
