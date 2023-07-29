@@ -50,20 +50,20 @@ INSERT INTO Orders (CustomerID, ProductID, OrderDate, Quantity) VALUES
     (4, 4, '2023-07-22', 2),
     (5, 5, '2023-07-22', 4);
 
--- SELECT * FROM Orders WHERE OrderDate >= '2023-01-01';
--- CREATE INDEX idx_OrderDate ON Orders (OrderDate);
+SELECT * FROM Orders;
+SELECT ProductName, Price  FROM Products;
 
--- SELECT * FROM Products WHERE ProductName LIKE '%Laptop%';
--- CREATE INDEX idx_ProductName ON Products (ProductName);
+SELECT * FROM Products WHERE ProductName LIKE '%Laptop%';
+SELECT * FROM Products WHERE ProductName = 'Laptop';
 
--- SELECT COUNT(*) FROM Orders WHERE ProductID IN (SELECT ProductID FROM Products WHERE Price > 1000);
--- SELECT COUNT(*) FROM Orders o
--- JOIN Products p ON o.ProductID = p.ProductID
--- WHERE p.Price > 1000;
+SELECT COUNT(*) FROM Orders WHERE ProductID IN (SELECT ProductID FROM Products WHERE Price > 1000);
+SELECT COUNT(*) FROM Orders o
+JOIN Products p ON o.ProductID = p.ProductID
+WHERE p.Price > 1000;
 
--- SELECT * FROM Customers WHERE Age > 30 AND LastName LIKE 'S%';
--- CREATE INDEX idx_LastName ON Customers (LastName);
+SELECT * FROM Customers WHERE Age > 30 AND LastName LIKE 'S%';
+CREATE INDEX idx_LastName ON Customers (LastName);
 
--- SELECT * FROM Orders WHERE OrderDate BETWEEN '2023-01-01' AND '2023-12-31';
--- CREATE INDEX idx_OrderDate ON Orders (OrderDate);
+SELECT * FROM Orders WHERE Year(OrderDate) = 2023;
+SELECT * FROM Orders WHERE OrderDate BETWEEN '2023-01-01' AND '2023-12-31';
 
