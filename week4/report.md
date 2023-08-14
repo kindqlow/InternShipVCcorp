@@ -235,3 +235,281 @@ Nhược điểm:
 •	Không hỗ trợ ACID hoàn toàn: Một số cơ sở dữ liệu đồ thị không hỗ trợ đầy đủ các tính năng ACID (Atomicity, Consistency, Isolation, Durability) như cơ sở dữ liệu quan hệ.
 
 •	Khó khăn trong việc thực hiện các truy vấn phức tạp: Mặc dù cơ sở dữ liệu đồ thị hỗ trợ truy vấn đồ thị phức tạp, nhưng so với cơ sở dữ liệu quan hệ, nó có hạn chế trong việc thực hiện các truy vấn phức tạp liên quan đến nhiều đỉnh và cạnh.
+
+# Tìm hiểu thêm
+## Tìm hiểu về MongoDB
+
+### Định nghĩa
+•	MongoDB là một cơ sở dữ liệu mã nguồn mở và là cơ sở dữ liệu NoSQL(*) hàng đầu, được hàng triệu người sử dụng. MongoDB được viết bằng C++.
+
+•	Ngoài ra, MongoDB là một cơ sở dữ liệu đa nền tảng, hoạt động trên các khái niệm Collection và Document, nó cung cấp hiệu suất cao, tính khả dụng cao và khả năng mở rộng dễ dàng.
+### Lợi thế của MongoDB
+•	Ít schema hơn: Vì schema được sinh ra là để nhóm các đối tượng vào một cụm, dễ quản lý. 
+
+•	Ví dụ như tạo 1 schema tên là Students chẳng hạn thì chỉ có những gì liên quan đến student thì mới được cho vào schema này. Trong khi đó trong mongodb thì chỉ 1 collection ta có thể chứa nhiều document khác nhau. Với mỗi document thì số trường, nội dung, kích thước lại có thể khác nhau.  
+
+•	Cấu trúc của một đối tượng rõ ràng.
+
+•	Không có các Join phức tạp.
+
+•	Khả năng mở rộng cực lớn: việc mở rộng dữ liệu mà không phải lo đến các vấn đề như khóa ngoại, khóa chính, kiểm tra ràng buộc, ... MongoDB cho phép thực hiện replication và sharding nên việc mở rộng cũng thuận lợi hơn.  
+
+•	Sử dụng bộ nhớ trong để lưu giữ cửa sổ làm việc cho phép truy cập dữ liệu nhanh hơn. Việc cập nhật được thực hiện nhanh gọn nhờ update tại chỗ (in-place).  
+
+So sánh với cơ sở dữ liệu quan hệ
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/5179d01e-76bc-4dbf-9a76-6b09d060578d)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/62d069c4-1c05-4456-b1c3-29c5adffa8fb)
+### Khi nào nên dùng MongoDB
+Sử dụng MongoDB trong trường hợp:
+
+•	Nếu website của có tính chất INSERT cao. Bởi vì mặc định MongoDB có sẵn cơ chế ghi với tốc độ cao và an toàn. Website của ở dạng thời gian thực nhiều, nghĩa là nhiều người thao tác với ứng dung. Nếu trong quá trình load bị lỗi tại một điểm nào đó thì nó sẽ bỏ qua phần đó nên sẽ an toàn.
+
+•	Website có quá nhiều dữ liệu. Giả sử web bạn có đến 10 triệu records thì đó là cơn ác mộng với MYSQL. Bởi vì MongoDB có khả năng tìm kiếm thông tin liên quan cũng khá nhanh nên trường hợp này nên dùng nó.
+
+•	Máy chủ không có hệ quản trị CSDL Trường hợp này thường bạn sẽ sử dụng SQLITE hoặc là MongoDB.
+### Khi nào không nên sử dụng
+•	Các ứng dụng cần sử dụng nhiều transaction (như ngân hàng) do Mongodb không có cơ chế transaction (giao dịch) để phục vụ cho các ứng dụng ngân hàng
+
+•	Các ứng dụng cần SQL (sử dụng joins).
+### Các thuật ngữ hay sử dụng
+•	_id – Là trường bắt buộc có trong mỗi document. Trường _id đại diện cho một giá trị duy nhất trong document MongoDB. Trường _id cũng có thể được hiểu là khóa chính trong document. Nếu bạn thêm mới một document thì MongoDB sẽ tự động sinh ra một _id đại diện cho document đó và là duy nhất trong cơ sở dữ liệu MongoDB.
+
+•	Collection – Là nhóm của nhiều document trong MongoDB. Collection có thể được hiểu là một bảng tương ứng trong cơ sở dữ liệu RDBMS (Relational Database Management System). Collection nằm trong một cơ sở dữ liệu duy nhất. Các collection không phải định nghĩa các cột, các hàng hay kiểu dữ liệu trước.
+
+•	Cursor – Đây là một con trỏ đến tập kết quả của một truy vấn. Máy khách có thể lặp qua một con trỏ để lấy kết quả.
+
+•	Database – Nơi chứa các Collection, giống với cơ sở dữ liệu RDMS chúng chứa các bảng. Mỗi Database có một tập tin riêng lưu trữ trên bộ nhớ vật lý. Một mấy chủ MongoDB có thể chứa nhiều Database.
+
+•	Document – Một bản ghi thuộc một Collection thì được gọi là một Document. Các Document lần lượt bao gồm các trường tên và giá trị.
+
+•	Field – Là một cặp name – value trong một document. Một document có thể có không hoặc nhiều trường. Các trường giống các cột ở cơ sở dữ liệu quan hệ.
+
+•	JSON – Viết tắt của JavaScript Object Notation. Con người có thể đọc được ở định dạng văn bản đơn giản thể hiện cho các dữ liệu có cấu trúc. Hiện tại JSON đang hỗ trợ rất nhiều ngôn ngữ lập trình.
+
+•	Index – Là những cấu trúc dữ liệu đặc biệt, dùng để chứa một phần nhỏ của các tập dữ liệu một cách dễ dàng để quét. Chỉ số lưu trữ giá trị của một fields cụ thể hoặc thiết lập các fields, sắp xếp theo giá trị của các fields này. Index hỗ trợ độ phân tích một cách hiệu quả các truy vấn. Nếu không có chỉ mục, MongoDB sẽ phải quét tất cả các documents của collection để chọn ra những document phù hợp với câu truy vấn. Quá trình quét này là không hiệu quả và yêu cầu MongoDB để xử lý một khối lượng lớn dữ liệu.
+
+Sự khác biệt của các trường và _id trong một document: Một _id được dùng để đại diện cho một document và chúng được sinh ra khi thêm một Document vào Collection.
+### Mô hình dữ liệu trong MongoDB
+•	Dữ liệu trong MongoDB có một schema linh hoạt. Các tài liệu trong cùng một bộ sưu tập không cần phải có cùng một tập hợp các trường hoặc cấu trúc. Các trường chung trong các tài liệu của một bộ sưu tập có thể chứa các loại dữ liệu khác nhau.
+Thiết kế Mô hình Dữ liệu (Data Model Design)
+
+•	MongoDB cung cấp hai loại mô hình dữ liệu: Mô hình dữ liệu nhúng và Mô hình dữ liệu chuẩn hóa. Tùy thuộc vào yêu cầu, bạn có thể sử dụng mô hình nào trong quá trình chuẩn bị tài liệu của bạn.
+Mô hình Dữ liệu Nhúng (Embedded Data Model)
+
+•	Trong mô hình này, bạn có thể nhúng (embed) tất cả dữ liệu liên quan vào một tài liệu duy nhất, nó cũng được gọi là mô hình dữ liệu không chuẩn hóa. 
+Mô hình Dữ liệu Chuẩn hóa (Normalized Data Model)
+
+•	Trong mô hình này, bạn có thể tham chiếu các tài liệu con trong tài liệu gốc bằng cách sử dụng các tham chiếu.  
+### Câu lệnh trong MongoDB
++Tạo DataBases use DATABASE_NAME
+
++Xóa DataBases db.dropDatabase()
+
++Tạo Collection db.createCollection(name, options) với options là: Chỉ định các tùy chọn về kích thước bộ nhớ và lập chỉ mục
+
++Xóa Collection db.collection.drop()
+
++Chèn Document insert()/insertOne() hoặc save()
+
++Truy vấn Document 
+
+•	Truy vấn dữ liệu từ collection find()
+
+•	In kết quả theo định dạng pretty()
+
+•	Các toán tử And, or, not, nor cú pháp 
+>db.my_database.find({ $TT: [ {<key1>:<value1>}, { <key2>:<value2>} ] })
+
++ Cập nhật Document update()/updateOne()/updateMany()/save()
+
++ Xóa Document remove((deletion criteria), (justOne))
+
++ Giới hạn bản ghi limit()
+
++ Sắp xếp bản ghi sort()
+
++ Lập chỉ mục createIndex() dropIndex()
+
+•	Chỉ mục hỗ trợ việc giải quyết câu truy vấn một cách hiệu quả. Nếu không có chỉ mục, MongoDB phải quét tất cả các tài liệu của một bộ sưu tập để chọn ra những tài liệu phù hợp với câu truy vấn. Quá trình quét này rất không hiệu quả và đòi hỏi MongoDB xử lý một lượng dữ liệu lớn.
+
+•	Chỉ mục là các cấu trúc dữ liệu đặc biệt, lưu trữ một phần nhỏ của bộ dữ liệu theo một cách dễ dàng để điều hướng. Chỉ mục lưu trữ giá trị của một trường cụ thể hoặc một tập hợp các trường, được sắp xếp theo giá trị của trường như được chỉ định trong chỉ mục.  
+
++ Phép tổng hợp (Aggregation) aggregate(AGGREGATE_OPERATION)
+
+•	Sao lưu (replication) là quy trình đồng bộ dữ liệu trên nhiều máy chủ. Sao lưu cung cấp tính sẵn có và tăng khả năng khả dụng dữ liệu với nhiều bản sao của dữ liệu trên các máy chủ cơ sở dữ liệu khác nhau. Sao lưu bảo vệ cơ sở dữ liệu khỏi việc mất một máy chủ duy nhất. Sao lưu cũng cho phép bạn khôi phục từ sự cố về phần cứng và gián đoạn dịch vụ. Với các bản sao thêm của dữ liệu, bạn có thể dành riêng một bản sao cho khôi phục sau thảm họa, báo cáo hoặc sao lưu.
+
+ ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/e21487eb-337b-4644-8208-6c1c2c31745e)
+
++ Sharding
+
+Sharding là quá trình lưu trữ các bản ghi dữ liệu trên nhiều máy tính và đây là phương pháp của MongoDB để đáp ứng yêu cầu về tăng trưởng dữ liệu. Khi kích thước dữ liệu tăng lên, một máy tính đơn lẻ có thể không đủ để lưu trữ dữ liệu cũng như cung cấp khả năng đọc và ghi ổn định. Sharding giải quyết vấn đề này bằng cách mở rộng theo chiều ngang. Với sharding, bạn có thể thêm nhiều máy tính hơn để hỗ trợ việc tăng trưởng dữ liệu và yêu cầu về các thao tác đọc và ghi.  
+
+Sơ đồ sau đây cho thấy Sharding trong MongoDB bằng cách sử dụng cụm phân mảnh.
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/73669bb7-911c-4f80-9433-b731055a2f06)
+ 
+•	Shards - Shard được sử dụng để lưu trữ dữ liệu. Chúng cung cấp tính sẵn có cao và tính nhất quán của dữ liệu. Trong môi trường sản xuất, mỗi shard là một replica set riêng biệt.
+
+•	Config Servers - Config servers lưu trữ siêu dữ liệu của cluster. Dữ liệu này chứa bản đồ của tập dữ liệu của cluster đến các shard. Query router sử dụng siêu dữ liệu này để chọn shards cụ thể để thực hiện các thao tác. Trong môi trường sản xuất, các sharded clusters có chính xác 3 config servers.
+
+•	Query Routers - Query routers là các phiên bản của MongoDB, tương tác với ứng dụng client và chuyển hướng các thao tác đến shard phù hợp. Query router xử lý và chọn shards để thực hiện các thao tác, sau đó trả kết quả về cho clients. Một cluster đã chia có thể chứa nhiều hơn một query router để phân chia tải yêu cầu từ clients. Client gửi yêu cầu tới một query router. Thông thường, một sharded cluster có nhiều query router.  
+
++ Backup và Restore
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/ca0ce9d6-46ca-4831-b41e-52c61f43a7af)
+
+•	Restore mongorestore 
++ Quan hệ trong MongoDB
+
+•	Các mối quan hệ có thể được mô hình hóa thông qua các phương pháp được nhúng và tham chiếu. Các mối quan hệ như vậy có thể là 1:1, 1:N, N:1 hoặc N:N.
++ Tham chiếu cơ sở dữ liệu: Sử dụng dbRef
+Truy vấn được bảo đảm (covered query) là một truy vấn trong đó:
+
+•	Tất cả các trường trong truy vấn đều là một phần của một chỉ mục.
+
+•	Tất cả các trường trả về trong truy vấn đều nằm trong cùng một chỉ mục.
+
+Vì tất cả các trường có trong truy vấn đều là một phần của chỉ mục, MongoDB khớp các điều kiện truy vấn và trả về kết quả bằng cách sử dụng cùng một chỉ mục mà không thực sự xem xét bên trong các tài liệu. Vì chỉ mục có sẵn trong RAM, việc truy xuất dữ liệu từ chỉ mục nhanh hơn nhiều so với việc truy xuất dữ liệu bằng cách quét các tài liệu.
++ Phân tích truy vấn (Analyzing Queries) là một khía cạnh rất quan trọng trong việc đo lường mức độ hiệu quả của cơ sở dữ liệu và thiết kế lập chỉ mục. 
+
+•	$explain cung cấp thông tin về truy vấn, chỉ mục được sử dụng trong truy vấn và các thống kê khác. Nó rất hữu ích khi phân tích các chỉ mục được tối ưu hóa tốt như thế nào.
+
+•	$hint buộc trình tối ưu hóa truy vấn sử dụng chỉ mục đã chỉ định để chạy truy vấn. Điều này đặc biệt hữu ích khi muốn kiểm tra hiệu năng của một truy vấn với các chỉ mục khác nhau.
+
++ Atomic Operations trong MongoDB là các hoạt động mà MongoDB duy trì tính toàn vẹn của dữ liệu được thực hiện trong một tài liệu duy nhất, mà không bị can thiệp bởi các hoạt động của các tài liệu khác. Bao gồm tạo, đọc, cập nhật và xóa (CRUD) dữ liệu.
+
++ Chỉ mục nâng cao 
+
+•	Chỉ mục trường mảng trong MongoDB là quy trình tạo chỉ mục cho các trường chứa các giá trị mảng. Khi sử dụng chỉ mục trường mảng, MongoDB có thể hiệu quả tìm kiếm, lọc và sắp xếp các tài liệu dựa trên các giá trị trong mảng.
+
+•	Chỉ mục trường con trong MongoDB là quá trình tạo chỉ mục cho các trường chứa các tài liệu con. Khi sử dụng chỉ mục trường con, MongoDB có thể hiệu quả truy vấn, lọc và sắp xếp các tài liệu dựa trên các giá trị trong tài liệu con.
+
++ Giới hạn chỉ mục
+
+•	Một bộ sưu tập không thể có nhiều hơn 64 chỉ mục.
+
+•	Độ dài của tên chỉ mục không thể dài hơn 125 ký tự.
+
+•	Một chỉ mục kết hợp có thể có tối đa 31 trường được chỉ mục.  
+
++ GridFS
+
+•	GridFS là một phương pháp lưu trữ và tìm kiếm tệp tin lớn trong MongoDB. Khi tải lên các tệp tin có dung lượng lớn hơn giới hạn 16MB của MongoDB, GridFS sẽ tách chúng thành các phần nhỏ hơn và lưu trữ trong hai bộ sưu tập: một bộ sưu tập cho các tệp tin dữ liệu và một bộ sưu tập cho các mảnh tin.
+
+•	GridFS sử dụng một cơ chế ghi chéo (chunking) để chia tệp tin thành các phần nhỏ gọi là các mảnh, và lưu trữ những mảnh này trong bộ sưu tập chunk. Mỗi mảnh có kích thước mặc định là 255kB, nhưng có thể được thay đổi theo yêu cầu. Thông qua việc chia nhỏ dữ liệu, GridFS cho phép tăng hiệu suất truy xuất và lưu trữ các tệp tin lớn.
+
+
+
+### Kiểu dữ liệu trong MongoDB
+MongoDB hỗ trợ các kiểu dữ liệu sau:
+
+•	Chuỗi: Đây là kiểu dữ liệu được sử dụng phổ biến nhất để lưu giữ dữ liệu. Chuỗi trong MongoDB phải là UTF-8 hợp lệ.
+
+•	Số nguyên: Kiểu dữ liệu này được sử dụng để lưu một giá trị số. Số nguyên có thể là 32 bit hoặc 64 bit phụ thuộc vào Server của bạn.
+
+•	Boolean: Kiểu dữ liệu này được sử dụng để lưu giữ một giá trị Boolean (true/false).
+
+•	Double: Kiểu dữ liệu này được sử dụng để lưu các giá trị số thực dấu chấm động.
+
+•	Min/ Max keys: Kiểu dữ liệu này được sử dụng để so sánh một giá trị với các phần tử BSON thấp nhất và cao nhất.
+
+•	Mảng: Kiểu dữ liệu này được sử dụng để lưu giữ các mảng hoặc danh sách hoặc nhiều giá trị vào trong một key.
+
+•	Timestamp: Đánh dấu thời điểm một Document được sửa đổi hoặc được thêm vào.
+
+•	Object: Kiểu dữ liệu này được sử dụng cho các Document được nhúng vào.
+
+•	Null: Kiểu dữ liệu này được sử dụng để lưu một giá trị Null.
+
+•	Symbol: Kiểu dữ liệu này được sử dụng giống như một chuỗi
+
+•	Date: Kiểu dữ liệu này được sử dụng để lưu giữ date và time hiện tại trong định dạng UNIX time.
+
+•	Object ID: Kiểu dữ liệu này được sử dụng để lưu giữ ID của Document.
+
+•	Binary data: Kiểu dữ liệu này được sử dụng để lưu giữ dữ liệu nhị phân.
+
+•	Code: Kiểu dữ liệu này được sử dụng để lưu giữ JavaScrip code vào trong Document.
+
+•	Regular expression: Kiểu dữ liệu này được sử dụng để lưu giữ Regular Expresion.
+### Hoạt động của MongoDB
+
+ ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/ba28a1c8-b5a6-4ac2-be42-d831fe2d0d3f)
+
+•	MongoDB hoạt động dưới một tiến trình ngầm service, luôn mở một cổng (Cổng mặc định là 27017) để lắng nghe các yêu cầu truy vấn, thao tác từ các ứng dụng gửi vào sau đó mới tiến hành xử lý.
+
+•	Mỗi một bản ghi của MongoDB được tự động gắn thêm một field có tên “_id” thuộc kiểu dữ liệu ObjectId mà nó quy định để xác định được tính duy nhất của bản ghi này so với bản ghi khác, cũng như phục vụ các thao tác tìm kiếm và truy vấn thông tin về sau. Trường dữ liệu “_id” luôn được tự động đánh index (chỉ mục) để tốc độ truy vấn thông tin đạt hiệu suất cao nhất.
+
+•	Mỗi khi có một truy vấn dữ liệu, bản ghi được cache (ghi đệm) lên bộ nhớ Ram, để phục vụ lượt truy vấn sau diễn ra nhanh hơn mà không cần phải đọc từ ổ cứng.
+
+•	Khi có yêu cầu thêm/sửa/xóa bản ghi, để đảm bảo hiệu suất của ứng dụng mặc định MongoDB sẽ chưa cập nhật xuống ổ cứng ngay, mà sau 60 giây MongoDB mới thực hiện ghi toàn bộ dữ liệu thay đổi từ RAM xuống ổ cứng.
+
++ Nhược điểm của Mongodb:
+
+•	Dữ liệu được caching, lấy RAM làm trọng tâm hoạt động vì vậy khi hoạt động yêu cầu một bộ nhớ RAM lớn
+
+•	Mọi thay đổi về dữ liệu mặc định đều chưa được ghi xuống ổ cứng ngay lập tức vì vậy khả năng bị mất dữ liệu từ nguyên nhân mất điện đột xuất là rất cao.
+
+## Tìm hiểu về index
+MySQL cung cấp 3 kiểu chỉ mục khác nhau cho dữ liệu, đó là chỉ mục B-Tree, Hash và R-Tree.
+
+•	Chỉ mục B-Tree (cây cân bằng): Đây là kiểu chỉ mục phổ biến nhất trong MySQL. Chỉ mục B-Tree được sử dụng để tìm kiếm giá trị cụ thể, tìm kiếm phạm vi, và sắp xếp dữ liệu theo thứ tự. Chỉ mục B-Tree có thể được sử dụng cho các trường dạng số, chuỗi ký tự và datetime.
+
+•	Chỉ mục Hash (băm): Chỉ mục Hash được sử dụng để tìm kiếm rất nhanh cho các giá trị cụ thể. Chỉ mục này sử dụng một hàm băm để ánh xạ dữ liệu vào chỉ mục. Tuy nhiên, chỉ mục Hash không hỗ trợ tìm kiếm phạm vi và không theo thứ tự.
+
+•	Chỉ mục R-Tree (cây R-Tree): Chỉ mục R-Tree được sử dụng trong các trường dữ liệu địa lý. Nó được sử dụng để tìm kiếm các đối tượng dựa trên vị trí, ví dụ như các hình dạng và vùng đất. Chỉ mục R-Tree cung cấp các tính năng chính như tìm kiếm trong pham vi và tìm kiếm gần nhau dựa trên khoảng cách.
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/fd4a58af-25ee-43b5-83c8-b78bce576e4f)
+
+•	Đánh index một trường
+Đây là cách khá thông thường khi chúng ta lựa chọn 1 column được sử dụng nhiều khi tìm kiếm và đánh index cho nó.
+
+Nhưng nếu số lượng giá trị unique hay giá trị khác NULL trong column đó quá thấp so với tổng số records của bảng thì việc đánh index lại không có nhiều ý nghĩa.
+
+•	Đánh index nhiều trường (B-Tree Index)
+
+Với trường hợp đánh index trên nhiều columns thì index chỉ có hiệu quả khi search theo thứ tự các trường của index.
+
+## Tìm hiểu về các loại engine trong MySQL
+### InnoDB
+Đây là Storage Engine mặc định trong MySQL 5.7. InnoDB là một Storage Engine transaction-safe (tuân thủ ACID) cho MySQL có các commit, rollback và khả năng khôi phục lỗi để bảo vệ dữ liệu người dùng. Row-level locking của InnoDB và kiểu nonlocking read của Oracle-style làm tăng sự đồng thời và hiệu suất của nhiều người dùng. InnoDB lưu trữ dữ liệu người dùng trong các clustered indexes để giảm I/O cho các truy vấn thông thường dựa trên các primary key. Để duy trì tính toàn vẹn của dữ liệu, InnoDB cũng hỗ trợ các ràng buộc toàn vẹn Foreign Key.
+### MyISAM
+Table-level locking giới hạn hiệu suất read/write dữ liệu, vì vậy nó thường được sử dụng cho các công việc read-only hoặc read-mostly trong các cấu hình Web và lưu trữ dữ liệu.
+### Memory
+Lưu trữ tất cả dữ liệu trong RAM, để truy cập nhanh trong các môi trường đòi hỏi tra cứu nhanh các dữ liệu không quan trọng. Engine này trước đây gọi là HEAP Engine. Storage Engine này đang sử dụng ít dần, do InnoDB với vùng bộ đệm cung cấp một cách mục đích chung và bền để giữ hầu hết hoặc tất cả dữ liệu trong memory, và NDBCLUSTER cung cấp tra cứu giá trị quan trọng nhanh cho các bộ dữ liệu phân tán lớn.
+### CSV
+Các bảng của nó thực sự là các tập tin văn bản với các giá trị được phân cách bởi dấu phẩy. Các bảng CSV cho phép bạn nhập hoặc đổ dữ liệu ở định dạng CSV, để trao đổi dữ liệu với các tập lệnh và ứng dụng đọc và ghi cùng một định dạng. Vì bảng CSV không được lập chỉ mục, bạn thường giữ dữ liệu trong các bảng InnoDB trong quá trình hoạt động bình thường và chỉ sử dụng các bảng CSV trong giai đoạn nhập hoặc xuất.
+### Archive
+Các bảng nhỏ gọn, không biểu hiện này được dùng để lưu trữ và truy xuất số lượng lớn các thông tin kiểm tra lịch sử, lưu trữ, hoặc kiểm tra an toàn.
+### Blackhole
+Công cụ lưu trữ Blackhole chấp nhận nhưng không lưu dữ liệu, tương tự như /dev/null trên Unix. Các truy vấn luôn trả về một tập rỗng. Các bảng này có thể được sử dụng trong các cấu hình nhân bản, nơi các lệnh DML được gửi đến các máy chủ nô lệ, nhưng máy chủ chủ không giữ bản sao dữ liệu của chính nó.
+### NDB (còn được gọi là NDBCLUSTER)
+Công cụ cơ sở dữ liệu được nhóm lại này đặc biệt phù hợp với các ứng dụng đòi hỏi thời gian hoạt động và tính khả dụng cao nhất có thể.
+### Merge
+Cho phép một DBA MySQL hoặc nhà phát triển hợp lý nhóm một loạt các bảng MyISAM giống hệt nhau và tham chiếu chúng như một đối tượng. Tốt cho các môi trường VLDB như lưu trữ dữ liệu.
+### Federated
+Cung cấp khả năng liên kết máy chủ MySQL riêng biệt để tạo ra một cơ sở dữ liệu hợp lý từ nhiều máy chủ vật lý. Rất tốt cho môi trường phân phối hoặc dữ liệu mart.
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/ba9f07e1-01c5-4c21-b4ed-2e08b7618166)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/a0d1479c-90b4-46e0-bf6e-3052c72eb6c9)
+
+•	[1] InnoDB hỗ trợ cho việc Geospatial indexing từ MySQL 5.7.5 trở lên.
+
+•	[2] InnoDB sử dụng Hash index nội bộ cho tính năng Hash Index của nó.
+
+•	[3] InnoDB hỗ trợ FULLTEXT từ MySQL 5.6.4 và sau đó.
+
+•	[4] Các bảng InnoDB đã nén được yêu cầu định dạng tệp InnoDB Barracuda.
+
+•	[5] Các bảng MyISAM nén chỉ được hỗ trợ khi sử dụng định dạng dòng nén. Các bảng sử dụng định dạng nén với MyISAM chỉ được đọc (readonly).
+
+•	[6] Thực hiện trên server (thông qua chức năng mã hóa). Mã hóa dữ liệu có sẵn từ MySQL 5.7 trở lên.
+
+•	[7] Thực hiện trên server thay vì Storage Engine.
+
+•	[8] Hỗ trợ cho khóa ngoại (foreign key) có sẵn từ MySQL Cluster NDB 7.3 và sau đó.
+
+•	[9] Thực hiện trên server thay vì Storage Engine.
