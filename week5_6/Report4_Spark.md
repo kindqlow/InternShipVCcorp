@@ -128,7 +128,7 @@ DAG execution (Directed Acyclic Graph execution) là quá trình thực hiện c
 
 Trên phương diện logic
 
-![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/758dd928-d043-4542-90fc-263edf388f57)
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/ee3c1842-82cc-40c6-981b-9d3e2b1ea1dd)
 
 Trên phương diện vật lý
 
