@@ -343,6 +343,9 @@ Editlog cùng với fsimage, được sử dụng để khôi phục lại trạ
 
 • Tốt cho mục đích sơ khai, nhưng không đủ tốt cho thực tế.
 ### 3.6.2 Tệp chuỗi (Sequence file)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/29294b83-0467-4d25-8011-94b4ba85c57c)
+
 • Cung cấp một cấu trúc dữ liệu liên tục cho các cặp khóa-giá trị nhị phân
 
 • Thông thường được sử dụng để chuyển dữ liệu giữa các công việc Map Reduce
@@ -357,6 +360,9 @@ Editlog cùng với fsimage, được sử dụng để khôi phục lại trạ
 
 • Hỗ trợ chia nhỏ ngay cả khi dữ liệu đã được nén
 ### 3.6.3 Avro
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/e5828d44-8af5-4d81-af93-88db64784965)
+
 • Dựa trên dòng (row based)
 
 • Hỗ trợ nén và chia nhỏ (splitting) dữ liệu (object)
@@ -375,6 +381,9 @@ Editlog cùng với fsimage, được sử dụng để khôi phục lại trạ
 
 • Phát hiện lỗi dữ liệu bị hỏng
 ### 3.6.4 Parquet
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/ed09cad9-05d6-44cc-899e-f68676e61ed3)
+
 • Định dạng tệp nhị phân hướng cột
 
 • Hiệu quả trong việc đọc/ghi dữ liệu trên đĩa khi chỉ cần truy vấn các cột cụ thể
@@ -383,6 +392,9 @@ Editlog cùng với fsimage, được sử dụng để khôi phục lại trạ
 
 • Hỗ trợ các cột lồng nhau (sử dụng mã hóa Dremel)
 ### 3.6.5 Optimized Row Columnar (ORC)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/25205419-8f38-41e2-a289-0dfa0e3eb200)
+
 • RCFile
 
   • Mỗi cột được nén riêng lẻ trong nhóm hàng (row group)
