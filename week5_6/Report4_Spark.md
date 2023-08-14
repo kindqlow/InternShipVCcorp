@@ -126,6 +126,18 @@ Các RDD trên giúp thực hiện các thao tác và xử lý dữ liệu log t
 ### 6.6.2 DAG
 DAG execution (Directed Acyclic Graph execution) là quá trình thực hiện các phép biến đổi và action trên Spark RDDs (Resilient Distributed Datasets) theo mô hình DAG.
 
+Trên phương diện logic
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/758dd928-d043-4542-90fc-263edf388f57)
+
+Trên phương diện vật lý
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/cfdd1f9f-4f47-4f98-b695-8ad94c236eb7)
+
+Tổng quát
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/72c05f30-6601-4a64-b530-6e473e5a3a2a)
+
 Trong DAG execution, các RDDs và các phép biến đổi (transformations) được tổ chức thành một đồ thị không chu trình (DAG). Các phép biến đổi là các bước biến đổi dữ liệu từ RDD gốc thông qua các phép biến đổi toán học và logic được áp dụng. Trên đồ thị DAG, mỗi đỉnh đại diện cho một RDD và mỗi cạnh thể hiện quan hệ phụ thuộc giữa các RDD dựa trên các phép biến đổi.
 
 Khi quá trình DAG execution bắt đầu, Spark sẽ tối ưu hóa thứ tự thực hiện các phép biến đổi dựa trên dependency trong đồ thị DAG, nhằm tối đa hiệu suất tính toán. Spark cũng có thể thực hiện các phép biến đổi song song (parallel) khi có thể để tận dụng sức mạnh tính toán của nhiều worker node trong hệ thống phân tán.
@@ -139,6 +151,8 @@ Resilient Distributed Dataset (RDD)
 • RDD trung gian trong bộ nhớ RAM
 
 • Khôi phục lỗi dựa trên lineage
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/67ade01d-e8e4-4bd9-bc74-a420434b0005)
 
 • Các hoạt động trên RDD được phân tán
 ## 6.7 DataFrame
