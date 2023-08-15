@@ -346,13 +346,27 @@ mesos://HOST:PORT - Kết nối với cụm xử lý Mesos
 yarn - Kết nối với cụm xử lý YARN
 ### 6.8.2 Vòng đời một Job trong Spark
 
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/d4b073cd-736c-4940-8d72-74a4788e6265)
+
+•	Sử dụng spark-submit, user gửi một ứng dụng.
+
+•	Trong spark-submit, chúng ta gọi phương thức main() mà user chỉ định. Nó cũng khởi chạy chương trình trình điều khiển (driver program).
+
+•	Chương trình trình điều khiển yêu cầu tài nguyên từ cluster manager mà chúng ta cần để khởi chạy các executor.
+
+•	Cluster manager khởi chạy các executor thay mặt cho chương trình trình điều khiển.
+
+•	Quá trình trình điều khiển chạy với sự giúp đỡ của ứng dụng người dùng. Dựa trên các hành động và biến đổi trên RDD, trình điều khiển gửi công việc cho các executor dưới dạng các nhiệm vụ (tasks).
+
+•	Các executor xử lý nhiệm vụ và gửi kết quả trở lại trình điều khiển thông qua người quản lý cụm.  
+
  ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/e01a0a4d-897c-43a0-bf29-e493eb34b8f4)
 
-RDD Objects (Resilient Distributed Datasets - Tập dữ liệu phân tán chịu lỗi)
+RDD Objects 
 
 •	Xây dựng DAG của các toán tử
 
-DAG Scheduler (Lập lịch DAG)
+DAG Scheduler 
 
 •	Chia DAG thành các giai đoạn của các tác vụ
 
