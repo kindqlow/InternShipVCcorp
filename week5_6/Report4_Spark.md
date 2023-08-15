@@ -80,7 +80,7 @@ Sự khác nhau giữa Spark and Map Reduce
 
 • Hadoop Yarn
 
-• Apache Mesos, và
+• Apache Mesos
 
 • Standalone Schedular (quản lý đơn giản trong Spark).
 ## 6.6 Resilient Distributed Dataset (RDD)
