@@ -96,6 +96,8 @@ RDD có thể được tạo ra theo hai cách:
 
 • Đọc dữ liệu từ nguồn bên ngoài (S3, C*, HDFS, v.v.)
 
+• Tạo từ RDD sẵn có
+
 1. Tạo song song (Parallelize)
 
 Lấy một bộ sưu tập tồn tại trong bộ nhớ và truyền nó vào phương thức parallelize của SparkContext
@@ -105,6 +107,10 @@ Thường không được sử dụng bên ngoài mục đích prototyping và t
 2. Đọc từ Tệp Văn Bản (Read from Text File)
 
 Có các phương pháp khác để đọc dữ liệu từ HDFS, C*, S3, HBase, v.v.
+
+3. Tạo từ RDD sẵn có
+
+Thực hiện các phép biến đổi để tạo RDD mới từ các RDD sẵn có
 
 Các hoạt động trên Dữ liệu Phân tán
 
