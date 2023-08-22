@@ -70,7 +70,7 @@ Một số đặc điểm và tính năng quan trọng của ConcurrentHashMap b
 ## 2.6 SafeThread, UnsafeThread,  DaemonThread
 ### 2.6.1 SafeThread
 Thread safety là một tính chất của một đoạn mã (hoặc một lớp) đảm bảo rằng nó có thể được sử dụng đồng thời bởi nhiều luồng mà không gây ra lỗi hoặc xung đột dữ liệu. Khi nhiều luồng truy cập và sửa đổi dữ liệu cùng một lúc, có thể xảy ra các tình huống không mong muốn như đọc/ghi dữ liệu không đồng nhất, race condition (đua nhau), deadlock (kẹt luồng), và các vấn đề bảo mật khác.
-
+ 
 Em đã triển khai ví dụ trong file ThreadSafetyExample
 ### 2.6.2 UnsafeThread
 Ngược lại với SafeThread trong lập trình đa luồng, một tình huống được coi là không an toàn khi một hoặc nhiều luồng cùng truy cập và thay đổi dữ liệu chia sẻ mà không có bất kỳ bảo đảm đồng bộ nào.
