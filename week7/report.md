@@ -50,11 +50,67 @@ Sort trong MapReduce:
 Sắp xếp phụ trong MapReduce:
  + Nếu muốn sắp xếp các giá trị của reducer, kỹ thuật sắp xếp phụ được sử dụng để cho phép sắp xếp các giá trị (tăng dần hoặc giảm dần) truyền đến mỗi reducer.  
 # Q8 Khi có quá nhiều dữ liệu cùng key lớn hơn kích thước phân vùng phải làm sao ?
+Khi có số lượng khóa ít nhưng lượng dữ liệu lại có sự chênh lệch lớn, có thể áp dụng các biện pháp sau:
+ 
+ + Chia nhỏ các khóa lớn thành các khóa nhỏ hơn. Điều này giúp tăng sự phân tán dữ liệu và tránh tình trạng lệch lạc. Sau đó sử dụng Perfect Balance để phân bổ công việc đồng đều.
+ + Sử dụng bước trung gian trước khi thực hiện MapReduce để phân tán dữ liệu. Trong bước này có thể sử dụng các thuật toán chia dữ liệu theo một quy tắc ngẫu nhiên để tạo ra nhiều khóa hơn. Sau đó sử dụng Perfect Balance để phân bổ công việc.
+ + Sử dụng Perfect Balance với phân vùng tay: Nếu các biện pháp trên không phù hợp, có thể sử dụng Perfect Balance với phân vùng tay. Với yêu cầu bạn xác định cách phân vùng dữ liệu và chỉ định các mapper và reducer cho mỗi phân vùng.
 
-# Q9 Active RM đồng bộ standby RM ntn
+Các biện pháp trên nhằm mục đích tối ưu hóa công việc MapReduce và đảm bảo công việc được phân bổ và xử lý một cách hiệu quả, ngay cả khi số lượng khóa ít và lượng dữ liệu lệch không đồng nhất.  
+# Q9 Trạng thái của Active RM lưu ở đâu để đồng bộ standby RM 
+ + Để đồng bộ giữa ResourceManager (RM) chế độ chờ và RM hoạt động trong kiến trúc YARN HA (High Availability), trạng thái của RM hoạt động được lưu trữ ở một nơi được gọi là ZooKeeper. ZooKeeper là một dịch vụ phân tán và đồng bộ hóa dữ liệu, được sử dụng để lưu trữ thông tin về trạng thái và quản lý cụm dịch vụ.
 
+ + Khi RM hoạt động, nó sẽ đồng bộ trạng thái của mình tới ZooKeeper. RM chờ tiếp tục kiểm tra trạng thái RM hoạt động từ ZooKeeper để biết liệu nó có thể tiếp tục hoạt động hay không.
+
++ Việc lưu trữ trạng thái RM hoạt động trong ZooKeeper đảm bảo rằng các nút RM sẽ không bị mất đồng bộ và có thể chuyển đổi một cách đáng tin cậy khi cần thiết trong hệ thống YARN HA.  
 # Q10 Ưu nhược điểm của execution cluster & client mode
+Ưu điểm của chế độ thực thi cụm (execution cluster mode) trong Apache Spark và chế độ khách hàng (client mode) là như sau:
+Chế độ thực thi cụm:
+- Ưu điểm: 
+   + Hiệu suất cao: Chế độ thực thi cụm sử dụng tài nguyên của cụm Spark cho việc thực thi. Điều này cho phép tận dụng nguồn lực mạnh mẽ của cụm để thực hiện các công việc tính toán song song và đạt hiệu suất cao.
+   + Quản lý tài nguyên: Chế độ thực thi cụm giúp phân phối các tác vụ tính toán trên các nút trong cụm, giúp cân bằng tải và tận dụng tối đa tài nguyên có sẵn trên cụm.
+   + Khả năng chịu lỗi: Chế độ này cung cấp khả năng khôi phục từ lỗi tự động. Khi một nút thất bại, Spark sẽ tự động chuyển tiếp công việc đến các nút khác trong cụm.
 
-# Q11 Phép tính chỉ có thể thực hiện trên dataset mà k thể trên dataframe Transformation: narrow, wide (suffles-trao đổi giữa các partition)
+- Nhược điểm:
+   + Không phù hợp với các ứng dụng yêu cầu tương tác thời gian thực
+   + Phụ thuộc vào tài nguyên cụm: Sử dụng chế độ thực thi cụm yêu cầu phụ thuộc vào tài nguyên cụm có sẵn để thực hiện và không phù hợp cho các ứng dụng nhỏ hoặc không yêu cầu tài nguyên lớn.
 
-# Q12 Giao thức Zab là  gì
+Chế độ Client:
+- Ưu điểm:
+   + Dễ dàng triển khai và sử dụng: Chế độ client không yêu cầu môi trường cụm cấu hình và có thể chạy trên một máy tính đơn lẻ. Điều này làm cho việc triển khai và sử dụng đơn giản và dễ dàng hơn.
+   + Tận dụng tài nguyên của máy tính cá nhân: Chế độ khách hàng cho phép tận dụng tài nguyên của máy tính cá nhân, cho phép thực hiện các công việc tính toán nhỏ hoặc trên một tập dữ liệu nhỏ.
+   + Hiểu quả khi chạy các ứng dụng có sự tương tác với người dùng
+
+- Nhược điểm:
+   + Hiệu suất thấp: Chế độ khách hàng có thể có hiệu suất thấp hơn so với chế độ thực thi cụm do sử dụng tài nguyên hạn chế của máy tính cá nhân.
+   + Yêu cầu tài nguyên chủ động từ người dùng: trong chế độ này, người dùng phải tổ chức và quản lý tài nguyên của mình một cách chủ động, như tài nguyên CPU, bộ nhớ và lưu trữ để đảm bảo việc tính toán được thực hiện thành công. 
+# Q11 Phép tính chỉ có thể thực hiện trên dataset mà không thể trên dataframe
+Dưới đây là danh sách các biến đổi (transformations) và hành động (actions) phổ biến mà chỉ dataset có thể thực hiện và dataframe không thể thực hiện:
+
+Biến đổi:
+ + as[String, Int, Double]: Chuyển đổi kiểu dữ liệu của các cột thành String, Int hoặc Double.
+ + coalesce(numPartitions): Kết hợp các phân vùng thành một phân vùng duy nhất.
+ + repartition(numPartitions, col1, col2, ...): Chia lại dữ liệu vào numPartitions và sắp xếp dữ liệu theo cách nhất định dựa trên cột chỉ định.
+ + sortWithinPartitions(col1, col2, ...): Sắp xếp các phân vùng dữ liệu dựa trên cột chỉ định trong mỗi phân vùng.
+
+Hành động:
+ + countByKey(): Đếm số lượng mục cho mỗi khóa.
+ + foreach(func): Thực thi một hàm cho mỗi mục trong dataset.
+ + reduceByKey(func): Kết hợp các giá trị dựa trên cùng một khóa bằng cách sử dụng hàm chỉ định.
+
+ Nguyên nhân là vì dataset và dataframe có thiết kế và cách hoạt động khác nhau.
+
+ + Tính cấu trúc dữ liệu: DataFrame được thiết kế để làm việc với dữ liệu có cấu trúc, trong khi dataset cho phép xử lý dữ liệu có cấu trúc và không cấu trúc. Do đó, dataset hỗ trợ kiểm tra tĩnh và xác định các kiểu dữ liệu tại thời điểm biên dịch, giúp phát hiện các lỗi tĩnh mà dataframe không thể xử lý được.
+ + Hiệu suất: DataFrame được tối ưu cho các hoạt động trên cấu trúc dữ liệu, vì vậy nó có hiệu suất cao trong các phép tính trên từng cột riêng lẻ. Tuy nhiên, dataset có tính năng kiểm tra tại thời điểm biên dịch, nhưng điều này có thể làm giảm hiệu suất so với dataframe. Tuy nhiên, việc kiểm tra kiểu dữ liệu tại thời điểm biên dịch giúp tránh các lỗi dữ liệu trong quá trình thực thi.
+ + Linh hoạt: DataFrame cung cấp giao diện dễ sử dụng và đơn giản hơn cho việc truy vấn và xử lý dữ liệu. Nó được sử dụng rộng rãi trong các tác vụ phân tích dữ liệu và xử lý dữ liệu quy mô lớn. Ngược lại, dataset cung cấp tính năng linh hoạt hơn để tạo và xử lý dữ liệu, nhưng với tính phức tạp và khả năng kiểm tra tĩnh hơn, nó thích hợp hơn cho các tác vụ phân tích dữ liệu phức tạp và yêu cầu cao hơn về loại dữ liệu.
+# Q12 Giao thức Zab
+Zookeeper Atomic Broadcast Protocol (ZAB) là một giao thức được sử dụng trong Zookeeper để đảm bảo sao chép dữ liệu theo đúng thứ tự và thực hiện việc bầu cử và khôi phục các node bị lỗi. Giao thức này có nhiệm vụ
+ + Quản lý thứ tự các giao dịch,
+ + Đảm bảo giao dịch được sao chép đúng như đã thực hiện
+ + Duy trì tổng thể của các giao dịch.
+
+ZAB được áp dụng trong Zookeeper qua một giao thức hai giai đoạn, cho phép sao chép các giao dịch trong khi đảm bảo các nguyên tắc thiết kế như đã đề cập ở trên. 
+
+ + Node leader tạo ra các giao dịch và gán số thứ tự cho chúng sau khi nhận yêu cầu thay đổi trạng thái từ client. Sau đó, nó gửi các giao dịch này đến tất cả các node follower và chờ đợi các phản hồi từ chúng.
+
+ + Node leader gửi các giao dịch đã có trong lịch sử của mình đến tất cả các node follower và nếu các node theo dõi nhận thấy rằng lịch sử của chúng đang kém hơn so với node leader, chúng bắt đầu gửi thông báo xác nhận cho các giao dịch mới. Khi nhận được các ACK từ một quần thể, các tin nhắn xác nhận được gửi đi. Đây là thời điểm mà leader tiềm năng thực sự trở thành leader mới của cụm.  
