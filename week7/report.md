@@ -24,7 +24,7 @@ Khi quá trình ghi đệm không đủ một khối (block) trong HDFS, HDFS l�
  + Khi có đủ gói tin để tạo thành một khối, DataNode sẽ ghi khối đó vào ổ đĩa lưu trữ của nó. Sau đó, khối này được coi là hoàn chỉnh và có thể được truy cập và xử lý bởi các ứng dụng và người dùng khác.
 Quá trình này đảm bảo tính phân tán và độ tin cậy của dữ liệu trong HDFS, giúp đảm bảo dữ liệu không bị mất hoặc bị hỏng trong quá trình ghi đệm.  
 
-Nguồn: chatGPT
+Nguồn: https://data-flair.training/blogs/hadoop-hdfs-data-read-and-write-operations/
 # 5 Khi đang ghi dữ liệu mà DataNode bị lỗi
 Trong quá trình ghi dữ liệu vào DataNode, nếu DataNode gặp sự cố, thì các hành động sau đây sẽ xảy ra, mà không ảnh hưởng đến client đang ghi dữ liệu.
 
@@ -48,8 +48,9 @@ Các tham số liên quan đến quá trình replication trong HDFS bao gồm:
  + dfs.namenode.replication.min: Đây là tham số quy định số lượng bản sao tối thiểu phải lưu trữ trên các nút (node). Nếu số lượng bản sao thực tế ít hơn giá trị này, HDFS sẽ cho rằng việc sao chép dữ liệu không thành công và ghi lại việc này. Giá trị mặc định là 1.
  + dfs.namenode.replication.pending.timeout.sec: Đây là tham số quy định khoảng thời gian tối đa để đợi việc sao chép bản sao dữ liệu. Nếu thời gian đợi vượt quá giá trị này, HDFS sẽ coi rằng việc sao chép không thành công và ghi lại việc này. Giá trị mặc định là 10.
 
-Nguồn: chatGPT
 Các tham số này có thể được tùy chỉnh trong tệp cấu hình hệ thống của HDFS để phù hợp với yêu cầu và môi trường cụ thể.  
+
+Nguồn: [chatGPT](https://www.waitingforcode.com/hdfs/replication-in-hdfs/read)
 # 7 Quá trình Suffling và Sort
 Shuffling trong MapReduce:
  + Quá trình chuyển dữ liệu từ các mapper đến reducer được gọi là shuffling. Đây là quá trình hệ thống thực hiện sắp xếp và chuyển đổi đầu ra của mapper thành đầu vào cho reducer. Việc shuffling trong MapReduce là quan trọng cho reducers vì nếu không có shuffling, reducers sẽ không có đầu vào. Shuffling có thể bắt đầu ngay cả trước khi giai đoạn map kết thúc, giúp tiết kiệm thời gian và hoàn thành công việc nhanh hơn.
@@ -60,7 +61,7 @@ Sort trong MapReduce:
 Sắp xếp phụ trong MapReduce:
  + Nếu muốn sắp xếp các giá trị của reducer, kỹ thuật sắp xếp phụ được sử dụng để cho phép sắp xếp các giá trị (tăng dần hoặc giảm dần) truyền đến mỗi reducer.
 
-Nguồn: https://data-flair.training/blogs/shuffling-and-sorting-in-hadoop/#:~:text=Shuffle%20phase%20in%20Hadoop%20transfers,and%20sorted%20by%20the%20key.
+Nguồn: https://data-flair.training/blogs/shuffling-and-sorting-in-hadoop/
 # 8 Khi có quá nhiều dữ liệu cùng key lớn hơn kích thước phân vùng phải làm sao ?
 Khi có số lượng khóa ít nhưng lượng dữ liệu lại có sự chênh lệch lớn, có thể áp dụng các biện pháp sau:
  
