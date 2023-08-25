@@ -50,7 +50,7 @@ Các tham số liên quan đến quá trình replication trong HDFS bao gồm:
 
 Các tham số này có thể được tùy chỉnh trong tệp cấu hình hệ thống của HDFS để phù hợp với yêu cầu và môi trường cụ thể.  
 
-Nguồn: [chatGPT](https://www.waitingforcode.com/hdfs/replication-in-hdfs/read)
+Nguồn: https://www.waitingforcode.com/hdfs/replication-in-hdfs/read
 # 7 Quá trình Suffling và Sort
 Shuffling trong MapReduce:
  + Quá trình chuyển dữ liệu từ các mapper đến reducer được gọi là shuffling. Đây là quá trình hệ thống thực hiện sắp xếp và chuyển đổi đầu ra của mapper thành đầu vào cho reducer. Việc shuffling trong MapReduce là quan trọng cho reducers vì nếu không có shuffling, reducers sẽ không có đầu vào. Shuffling có thể bắt đầu ngay cả trước khi giai đoạn map kết thúc, giúp tiết kiệm thời gian và hoàn thành công việc nhanh hơn.
@@ -117,13 +117,14 @@ Hành động:
  + foreach(func): Thực thi một hàm cho mỗi mục trong dataset.
  + reduceByKey(func): Kết hợp các giá trị dựa trên cùng một khóa bằng cách sử dụng hàm chỉ định.
 
- Nguyên nhân là vì dataset và dataframe có thiết kế và cách hoạt động khác nhau.
+Nguồn: 
 
- + Tính cấu trúc dữ liệu: DataFrame được thiết kế để làm việc với dữ liệu có cấu trúc, trong khi dataset cho phép xử lý dữ liệu có cấu trúc và không cấu trúc. Do đó, dataset hỗ trợ kiểm tra tĩnh và xác định các kiểu dữ liệu tại thời điểm biên dịch, giúp phát hiện các lỗi tĩnh mà dataframe không thể xử lý được.
- + Hiệu suất: DataFrame được tối ưu cho các hoạt động trên cấu trúc dữ liệu, vì vậy nó có hiệu suất cao trong các phép tính trên từng cột riêng lẻ. Tuy nhiên, dataset có tính năng kiểm tra tại thời điểm biên dịch, nhưng điều này có thể làm giảm hiệu suất so với dataframe. Tuy nhiên, việc kiểm tra kiểu dữ liệu tại thời điểm biên dịch giúp tránh các lỗi dữ liệu trong quá trình thực thi.
- + Linh hoạt: DataFrame cung cấp giao diện dễ sử dụng và đơn giản hơn cho việc truy vấn và xử lý dữ liệu. Nó được sử dụng rộng rãi trong các tác vụ phân tích dữ liệu và xử lý dữ liệu quy mô lớn. Ngược lại, dataset cung cấp tính năng linh hoạt hơn để tạo và xử lý dữ liệu, nhưng với tính phức tạp và khả năng kiểm tra tĩnh hơn, nó thích hợp hơn cho các tác vụ phân tích dữ liệu phức tạp và yêu cầu cao hơn về loại dữ liệu.
+ + https://databasetown.com/difference-between-dataset-vs-dataframe/
+ + https://timepasstechies.com/datasets-dataframes-spark-examples/
+ + https://www.databricks.com/spark/getting-started-with-apache-spark/datasets
+ + https://mallikarjuna_g.gitbooks.io/spark/content/spark-sql-dataset.html
+ + https://www.clairvoyant.ai/blog/custom-partitioning-an-apache-spark-dataset
 
-Nguồn: chatGPT
 # 12 Giao thức Zab
 Zookeeper Atomic Broadcast Protocol (ZAB) là một giao thức được sử dụng trong Zookeeper để đảm bảo sao chép dữ liệu theo đúng thứ tự và thực hiện việc bầu cử và khôi phục các node bị lỗi. Giao thức này có nhiệm vụ
  + Quản lý thứ tự các giao dịch,
