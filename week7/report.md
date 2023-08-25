@@ -9,7 +9,7 @@ Nguồn: [geeksforgeeks](https://www.geeksforgeeks.org/hadoop-rack-and-rack-awar
  + Trong Hadoop, dữ liệu được lưu trữ dưới dạng các khối. Báo cáo khối là một báo cáo chứa thông tin về các khối dữ liệu được lưu trữ trên DataNode.
  + Mỗi DataNode trong một cụm Hadoop định kỳ gửi một báo cáo khối đến NameNode, chứa thông tin như ID khối, độ dài của khối và vị trí của khối
 
-Nguồn: https://saturncloud.io/blog/how-to-get-block-report-from-one-specific-rack-in hadoop/#:~:text=A%20block%20report%20is%20a,the%20location%20of%20the%20block.
+Nguồn: https://saturncloud.io/blog/how-to-get-block-report-from-one-specific-rack-in 
 # 3 Tại sao kích thước một block là 128MB ?
 Không có kích thước block phù hợp với mọi dữ liệu mà chỉ có tính chất tương đối. Có vài nguyên nhân có thể kể ra như sau:
   + Để giảm chi phí tìm kiếm: Với các khối có kích thước lớn, thời gian để chuyển dữ liệu từ đĩa có thể lâu hơn so với thời gian để bắt đầu khối. Điều này dẫn đến việc chuyển nhiều khối với tốc độ chuyển đĩa.
