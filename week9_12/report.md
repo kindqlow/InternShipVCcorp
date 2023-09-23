@@ -17,6 +17,8 @@
 
 ## 1.2 Cài đặt Spark chạy trên yarn
 
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/35d22988-f911-4cf4-811e-408dbf9cd667)
+
 # 2 Chạy chương trình WordCount
 
 ## 2.1 MapReduce
@@ -28,6 +30,16 @@
 ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/54e246f6-df54-4ed2-bb00-a1d804f8d6c7)
 
 # 3 Sinh dữ liệu và visualize
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/2bbba854-596d-4b0e-a17b-3994ef335771)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/3d89abc2-67de-457e-a6d2-32aa735d3158)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/c86eb924-58dd-4ec5-a7e3-3de85215bb8a)
+
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/d9e0d2d6-ecc7-48e2-b0a6-7a89f9606c54)
+
+Do phiên bản pyspark và spark không tương thích nên em không thể thực hiện generate và visualize được
 
 # 4 Các công nghệ mở rộng
 
