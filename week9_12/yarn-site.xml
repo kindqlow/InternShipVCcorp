@@ -1,0 +1,126 @@
+<configuration>
+
+<property>
+  <name>dfs.name.dir</name>
+  <value>file:///home/hdfs2/metadata/dfs/namenode</value>
+</property>
+<property>
+  <name>dfs.data.dir</name>
+  <value>file:///home/hdfs2/metadata/dfs/datanode</value>
+</property>
+<property>
+  <name>dfs.replication</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>dfs.namenode.http-address</name>
+  <value>10.5.94.234:50072</value>
+</property>
+<property>
+  <name>dfs.datanode.address</name>
+  <value>0.0.0.0:50024</value>
+</property>
+<property>
+  <name>dfs.datanode.ipc.address</name>
+  <value>0.0.0.0:50034</value>
+</property>
+<property>
+  <name>dfs.datanode.http.address</name>
+  <value>0.0.0.0:50089</value>
+</property>
+
+<property>
+  <name>dfs.secondary.http.address</name>
+  <value>0.0.0.0:50190</value>
+</property>
+
+<property>
+  <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+  <value>false</value>
+</property>
+<property>
+  <name>dfs.client.use.datanode.hostname</name>
+  <value>false</value>
+  <description>Whether clients should use datanode hostnames when
+    connecting to datanodes.
+  </description>
+</property>
+<property>
+  <name>dfs.datanode.use.datanode.hostname</name>
+  <value>false</value>
+  <description>Whether datanodes should use datanode hostnames when
+    connecting to other datanodes for data transfer.
+  </description>
+</property>
+
+
+</configuration>
+<configuration>
+
+<property>
+  <name>yarn.nodemanager.aux-services</name>
+  <value>mapreduce_shuffle</value>
+</property>
+<property>
+  <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+  <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.hostname</name>
+  <value>10.5.94.234</value>
+</property>
+
+<property>
+  <name>yarn.resourcemanager.webapp.address</name>
+  <value>10.5.94.234:8090</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.address</name>
+  <value>0.0.0.0:8246</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.resource-tracker.address</name>
+  <value>10.5.94.234:8245</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.scheduler.address</name>
+  <value>10.5.94.234:8244</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.admin.address</name>
+  <value>10.5.94.234:8247</value>
+</property>
+<property>
+  <name>yarn.nodemanager.webapp.address</name>
+  <value>0.0.0.0:8256</value>
+</property>
+<property>
+  <name>yarn.nodemanager.localizer.address</name>
+  <value>0.0.0.0:8254</value>
+</property>
+
+<property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>1536</value>
+</property>
+<property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>1536</value>
+</property>
+<property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>128</value>
+</property>
+
+<property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+</property>
+<property>
+    <name>yarn.nodemanager.vmem-pmem-ratio</name>
+    <value>3</value>
+</property>
+
+
+</configuration>
