@@ -25,6 +25,8 @@
 
 ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/3aa980f6-1641-4380-a425-f8b634235759)
 
+![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/aa82cc88-5572-495b-b25a-fb0fdf28a3dc)
+
 ## 2.2 Spark
 
 ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/54e246f6-df54-4ed2-bb00-a1d804f8d6c7)
