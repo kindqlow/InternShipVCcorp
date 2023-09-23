@@ -41,7 +41,7 @@
 
 ![image](https://github.com/kindqlow/internshipVccorp/assets/104091319/d9e0d2d6-ecc7-48e2-b0a6-7a89f9606c54)
 
-Do phiên bản python không tương thích nên em không thể thực hiện generate và visualize được
+Do phiên bản python không tương thích(driver 3.9 và worker 3.10) nên em không thể thực hiện generate và visualize được
 
 # 4 Các công nghệ mở rộng
 
