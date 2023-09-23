@@ -1,0 +1,58 @@
+<configuration>
+
+<property>
+  <name>dfs.name.dir</name>
+  <value>file:///home/hdfs2/metadata/dfs/namenode</value>
+</property>
+<property>
+  <name>dfs.data.dir</name>
+  <value>file:///home/hdfs2/metadata/dfs/datanode</value>
+</property>
+<property>
+  <name>dfs.replication</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>dfs.namenode.http-address</name>
+  <value>10.5.94.234:50072</value>
+</property>
+<property>
+  <name>dfs.datanode.address</name>
+  <value>0.0.0.0:50024</value>
+</property>
+<property>
+  <name>dfs.datanode.ipc.address</name>
+  <value>0.0.0.0:50034</value>
+</property>
+<property>
+  <name>dfs.datanode.http.address</name>
+  <value>0.0.0.0:50089</value>
+</property>
+
+<property>
+  <name>dfs.secondary.http.address</name>
+  <value>0.0.0.0:50190</value>
+</property>
+
+<property>
+  <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+  <value>false</value>
+</property>
+<property>
+  <name>dfs.client.use.datanode.hostname</name>
+  <value>false</value>
+  <description>Whether clients should use datanode hostnames when
+    connecting to datanodes.
+  </description>
+</property>
+<property>
+  <name>dfs.datanode.use.datanode.hostname</name>
+  <value>false</value>
+  <description>Whether datanodes should use datanode hostnames when
+    connecting to other datanodes for data transfer.
+  </description>
+</property>
+
+
+</configuration>
